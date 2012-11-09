@@ -3,7 +3,7 @@
 module Navfund
   class InvalidProvider < StandardError; end
 
-  PROVIDERS = [Metrobank]
+  PROVIDERS = ["Metrobank"]
 
   #def self.scrape(url)
   #  Providers.each do |scraper|

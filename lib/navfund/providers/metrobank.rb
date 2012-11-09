@@ -1,9 +1,9 @@
 # Metrobank
-
+puts "LOADED METROBANK"
 module Navfund
   
   class Metrobank
-    def new
+    def initialize
       puts "Hello"
     end  
   end
