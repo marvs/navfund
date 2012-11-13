@@ -11,10 +11,12 @@ require "navfund/utils/require_relative"
 # Main files
 require "navfund/version"
 require "navfund/navfund"
+require "navfund/provider"
 
 # Providers
 require "navfund/providers/metrobank"
+require "navfund/providers/sunlife"
 
 module Navfund
-  # Your code goes here... or not
+  Providers = [Metrobank, Sunlife]
 end

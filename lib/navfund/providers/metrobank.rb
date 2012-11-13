@@ -1,11 +1,15 @@
 # Metrobank
-puts "LOADED METROBANK"
+
 module Navfund
-  
-  class Metrobank
+  class Metrobank < Provider
+    # List of funds
+    MAIN_URL = "http://www.metrobank.com.ph/trust_product.asp"
+    Funds = [""]
+   
     def initialize
-      puts "Hello"
+      @url = MAIN_URL
+      self.scrape
     end  
+    
   end
-  
 end
