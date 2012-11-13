@@ -1,6 +1,6 @@
 # Navfund
 
-Navfund is a ruby gem that fetches the values of the current NAVPU/NAVPS of several Banks/Providers of UITFs/Mutual Funds in the Philippines. Currently it only supports Sunlife NAVPS.
+Navfund is a ruby gem that fetches the values of the current NAVPU/NAVPS of several Banks/Providers of UITFs/Mutual Funds. Currently it only supports Philippine providers.
 
 ## Installation
 
