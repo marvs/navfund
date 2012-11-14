@@ -11,6 +11,7 @@ require "navfund/utils/require_relative"
 # Main files
 require "navfund/version"
 require "navfund/navfund"
+require "navfund/exceptions"
 require "navfund/provider"
 
 # Providers

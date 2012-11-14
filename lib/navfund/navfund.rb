@@ -1,7 +1,6 @@
 # Main module
 
 module Navfund
-  class InvalidProvider < StandardError; end
 
   #def self.scrape(url)
   #  Providers.each do |scraper|

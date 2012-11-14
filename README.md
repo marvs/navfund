@@ -10,11 +10,11 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    bundle
 
 Or install it yourself as:
 
-    $ gem install navfund
+    gem install navfund
 
 ## Usage
 
@@ -22,19 +22,35 @@ Get a list of supported Providers:
 
     Navfund::Providers
 
-Get supported funds for a specific Provider:
-
-    Navfund::Sunlife::Funds
-
 Initialize a Provider's data:
 
     @sunlife = Navfund::Sunlife.new
-        
+
+To get a list of supported funds for a specific Provider:
+
+    Navfund::Sunlife::Funds
+    @sunlife.funds  # if a provider is initialized
+
 Get the current NAVPU/NAVPS of a fund, by name:
 
     @sunlife.value("Bond Fund")
     
+Some Providers have a separate page when listing VUL (Variable Unit Life Insurance) fund values. To get the VUL value by name, add a :vul option when calling the value method. It is possible that the same name is used for both VUL and non-VUL funds:
+
+    @sunlife.value("Bond Fund", :vul)
+    
 A Navfund::Provider::InvalidFund will be raised if the specified fund is not supported or is invalid.
+
+## Testing
+
+Install the minitest gem if its not already installed in your system
+
+    gem install minitest
+    
+Then run the tests (default rake task is the 'test' task):
+
+    rake test
+
 
 ## Contributing
 
