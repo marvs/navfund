@@ -2,10 +2,31 @@
 
 module Navfund
   class Sunlife < Provider
-    # List of funds
     MAIN_URL = "http://www.sunlife.com.ph/philippines/Products+and+Services/Sun+Life+Prosperity+Funds?vgnLocale=en_CA"
     VUL_URL = "http://www.sunlife.com.ph/philippines/Products+and+Services/VUL?vgnLocale=en_CA"
-    Funds = ["Bond Fund", "Balanced Fund", "Equity Fund", "Money Market Fund", "GS Fund", "Dollar Advantage Fund", "Dollar Abundance Fund"]
+    Funds = [
+      {:name => "Bond Fund", :currency => "PHP"}, 
+      {:name => "Balanced Fund", :currency => "PHP"},
+      {:name => "Equity Fund", :currency => "PHP"},
+      {:name => "Money Market Fund", :currency => "PHP"},
+      {:name => "GS Fund", :currency => "PHP"},
+      {:name => "Dollar Advantage Fund", :currency => "USD"},
+      {:name => "Dollar Abundance Fund", :currency => "USD"},
+      {:name => "Money Market Fund", :currency => "PHP"},
+      {:name => "MyFuture 2020 Fund", :currency => "PHP"},
+      {:name => "MyFuture 2025 Fund", :currency => "PHP"},
+      {:name => "MyFuture 2030 Fund", :currency => "PHP"},
+      {:name => "MyFuture 2035 Fund", :currency => "PHP"},
+      {:name => "MyFuture 2040 Fund", :currency => "PHP"},
+      {:name => "Income Fund", :currency => "PHP"},
+      {:name => "Opportunity Fund", :currency => "PHP"},
+      {:name => "Growth Fund", :currency => "PHP"},
+      {:name => "Dollar Bond Fund", :currency => "USD"},
+      {:name => "Sun Prestige Capital++ Fund", :currency => "USD"},
+      {:name => "Sun Dollar Maximizer Fund", :currency => "USD"},
+      {:name => "Sun Dollar Maximizer - UCG Fund", :currency => "USD"},
+      {:name => "Sun Dollar Maximizer - UCG 2 Fund", :currency => "USD"}
+      ]
    
     def initialize
       @url = MAIN_URL
@@ -38,12 +59,19 @@ module Navfund
       val
     end
     
-    def valid_fund?(fund)
-      Funds.include?(fund)
-    end
-    
+    # List supported funds
     def funds
       Funds
+    end
+    
+    # List supported funds by name
+    def fund_names
+      self.funds.map{ |x| x[:name] }
+    end
+    
+    # Check if the fund name is supported
+    def valid_fund?(fund)
+      self.fund_names.include?(fund)
     end
   end
 end
