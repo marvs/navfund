@@ -5,27 +5,33 @@ module Navfund
     MAIN_URL = "http://www.sunlife.com.ph/philippines/Products+and+Services/Sun+Life+Prosperity+Funds?vgnLocale=en_CA"
     VUL_URL = "http://www.sunlife.com.ph/philippines/Products+and+Services/VUL?vgnLocale=en_CA"
     Funds = [
-      {:name => "Bond Fund", :currency => "PHP"}, 
-      {:name => "Balanced Fund", :currency => "PHP"},
-      {:name => "Equity Fund", :currency => "PHP"},
-      {:name => "Money Market Fund", :currency => "PHP"},
-      {:name => "GS Fund", :currency => "PHP"},
-      {:name => "Dollar Advantage Fund", :currency => "USD"},
-      {:name => "Dollar Abundance Fund", :currency => "USD"},
-      {:name => "Money Market Fund", :currency => "PHP"},
-      {:name => "MyFuture 2020 Fund", :currency => "PHP"},
-      {:name => "MyFuture 2025 Fund", :currency => "PHP"},
-      {:name => "MyFuture 2030 Fund", :currency => "PHP"},
-      {:name => "MyFuture 2035 Fund", :currency => "PHP"},
-      {:name => "MyFuture 2040 Fund", :currency => "PHP"},
-      {:name => "Income Fund", :currency => "PHP"},
-      {:name => "Opportunity Fund", :currency => "PHP"},
-      {:name => "Growth Fund", :currency => "PHP"},
-      {:name => "Dollar Bond Fund", :currency => "USD"},
-      {:name => "Sun Prestige Capital++ Fund", :currency => "USD"},
-      {:name => "Sun Dollar Maximizer Fund", :currency => "USD"},
-      {:name => "Sun Dollar Maximizer - UCG Fund", :currency => "USD"},
-      {:name => "Sun Dollar Maximizer - UCG 2 Fund", :currency => "USD"}
+      {:name => "Bond Fund", :currency => "PHP", :type => "main"}, 
+      {:name => "Balanced Fund", :currency => "PHP", :type => "main"},
+      {:name => "Equity Fund", :currency => "PHP", :type => "main"},
+      {:name => "Money Market Fund", :currency => "PHP", :type => "main"},
+      {:name => "GS Fund", :currency => "PHP", :type => "main"},
+      {:name => "Dollar Advantage Fund", :currency => "USD", :type => "main"},
+      {:name => "Dollar Abundance Fund", :currency => "USD", :type => "main"},
+      {:name => "Money Market Fund", :currency => "PHP", :type => "vul"},
+      {:name => "Bond Fund", :currency => "PHP", :type => "vul"},
+      {:name => "Balanced Fund", :currency => "PHP", :type => "vul"},
+      {:name => "Equity Fund", :currency => "PHP", :type => "vul"},
+      {:name => "MyFuture 2020 Fund", :currency => "PHP", :type => "vul"},
+      {:name => "MyFuture 2025 Fund", :currency => "PHP", :type => "vul"},
+      {:name => "MyFuture 2030 Fund", :currency => "PHP", :type => "vul"},
+      {:name => "MyFuture 2035 Fund", :currency => "PHP", :type => "vul"},
+      {:name => "MyFuture 2040 Fund", :currency => "PHP", :type => "vul"},
+      {:name => "Income Fund", :currency => "PHP", :type => "vul"},
+      {:name => "Opportunity Fund", :currency => "PHP", :type => "vul"},
+      {:name => "Growth Fund", :currency => "PHP", :type => "vul"},
+      {:name => "Dollar Bond Fund", :currency => "USD", :type => "vul"},
+      {:name => "Global Income Fund", :currency => "USD", :type => "vul"},
+      {:name => "Sun Prestige Capital++ Fund", :currency => "USD", :type => "vul"},
+      {:name => "Sun Dollar Maximizer Fund", :currency => "USD", :type => "vul"},
+      {:name => "Sun Dollar Maximizer - UCG Fund", :currency => "USD", :type => "vul"},
+      {:name => "Sun Dollar Maximizer - UCG 2 Fund", :currency => "USD", :type => "vul"},
+      {:name => "Sun Dollar Maximizer - EA Fund", :currency => "USD", :type => "vul"},
+      {:name => "Sun Dollar Maximizer - EA 2 Fund", :currency => "USD", :type => "vul"}
       ]
    
     def initialize
@@ -40,6 +46,7 @@ module Navfund
     # It is possible that the same fund name is used for VUL and non-VUL funds so this is necessary
     def value(fund, fund_type=nil)
       val = nil
+      fund_type = fund_type.to_sym unless fund_type.blank?
       # Set fund_type to nil if VUL page is not present
       fund_type = nil if fund_type == :vul && @wrapped_vul_document.nil?
       if valid_fund?(fund)
