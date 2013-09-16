@@ -46,7 +46,7 @@ module Navfund
     # It is possible that the same fund name is used for VUL and non-VUL funds so this is necessary
     def value(fund, fund_type=nil)
       val = nil
-      fund_type = fund_type.to_sym unless fund_type.blank?
+      fund_type = fund_type.to_sym if fund_type.is_a?(String)
       # Set fund_type to nil if VUL page is not present
       fund_type = nil if fund_type == :vul && @wrapped_vul_document.nil?
       if valid_fund?(fund)

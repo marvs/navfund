@@ -24,7 +24,7 @@ module Navfund
     # Fetch the current value
     def value(fund, fund_type=nil)
       val = nil
-      fund_type = fund_type.to_sym unless fund_type.blank?
+      fund_type = fund_type.to_sym if fund_type.is_a?(String)
       # Set fund_type to nil if VUL page is not present
       fund_type = nil if fund_type == :vul && @wrapped_vul_document.nil?
       if valid_fund?(fund)
@@ -38,20 +38,6 @@ module Navfund
         raise InvalidFund
       end
       val
-    end
-    
-    def find_fund_node(doc, fund)
-      fname = nil
-      if fund.match(/'/)
-        # Fund name contains apostrophe, iterate nodeset and compare text instead
-        tfund = fund.split('\'').last
-        doc.search("[text()*='#{tfund}']").each do |tn|
-          fname = tn if tn.text == fund
-        end
-      else
-        fname = doc.search("[text()*='#{fund}']").first
-      end
-      fname
     end
     
     # List supported funds
