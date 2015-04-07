@@ -3,56 +3,31 @@
 module Navfund
   class Metrobank < Provider
     # List of funds
-    MAIN_URL = "http://www.metrobank.com.ph/trust_product.asp"
+    MAIN_URL = "http://www.uitf.com.ph/daily_navpu.php?bank_id=1"
     Funds = [
-      {:name => "Money Market Fund", :currency => "PHP", :type => "main"}, 
-      {:name => "Max-3 Bond Fund", :currency => "PHP", :type => "main"},
-      {:name => "Wealth Builder Fund", :currency => "PHP", :type => "main"},
-      {:name => "Max-5 Bond Fund", :currency => "PHP", :type => "main"},
-      {:name => "Balanced Fund", :currency => "PHP", :type => "main"},
-      {:name => "Equity Fund", :currency => "PHP", :type => "main"},
-      {:name => "$ Money Market Fund", :currency => "USD", :type => "main"},
-      {:name => "$ Max-3 Bond Fund", :currency => "USD", :type => "main"},
-      {:name => "$ Max-5 Bond Fund", :currency => "USD", :type => "main"}
+      {:name => "Money Market Fund", :currency => "PHP", :code => "money_market"}, 
+      {:name => "Max-3 Bond Fund", :currency => "PHP", :code => "max3_bond"},
+      {:name => "Wealth Builder Fund", :currency => "PHP", :code => "wealth_builder"},
+      {:name => "Max-5 Bond Fund", :currency => "PHP", :code => "max5_bond"},
+      {:name => "Balanced Fund", :currency => "PHP", :code => "balanced"},
+      {:name => "Equity Fund", :currency => "PHP", :code => "equity"},
+      {:name => "High Dividend Yield Fund", :currency => "PHP", :code => "high_dividend_yield"},
+      {:name => "PSEi Tracker Fund", :currency => "PHP", :code => "psei_tracker"},
+      {:name => "$ Money Market Fund", :currency => "USD", :code => "dollar_money_market"},
+      {:name => "$ Max-3 Bond Fund", :currency => "USD", :code => "dollar_max3_bond"},
+      {:name => "$ Max-5 Bond Fund", :currency => "USD", :code => "dollar_max5_bond"}
       ]
-   
+    
     def initialize
       @url = MAIN_URL
-      self.scrape
-    end  
+      @funds = Funds
+      scrape
+    end
     
     # Fetch the current value
-    def value(fund, fund_type=nil)
-      val = nil
-      fund_type = fund_type.to_sym if fund_type.is_a?(String)
-      # Set fund_type to nil if VUL page is not present
-      fund_type = nil if fund_type == :vul && @wrapped_vul_document.nil?
-      if valid_fund?(fund)
-        source_document = (fund_type == :vul) ? @wrapped_vul_document : @wrapped_document
-        fname = source_document.search("[text()*='#{fund}']").first
-        if fname
-          fval = fname.parent.next_element rescue nil
-        end
-        val = Provider.strip_value(fval.text) if fval
-      else
-        raise InvalidFund
-      end
-      val
+    def value(fund)
+      uitf_com_ph_parser(fund)
     end
     
-    # List supported funds
-    def funds
-      Funds
-    end
-    
-    # List supported funds by name
-    def fund_names
-      self.funds.map{ |x| x[:name] }
-    end
-    
-    # Check if the fund name is supported
-    def valid_fund?(fund)
-      self.fund_names.include?(fund)
-    end
   end
 end

@@ -36,7 +36,8 @@ module Navfund
       
     def initialize
       @url = MAIN_URL
-      @vul_url = VUL_URL
+      @vul_document = open(VUL_URL).read
+      @wrapped_vul_document = Nokogiri::HTML(@vul_document)
       self.scrape
     end 
     
@@ -86,19 +87,5 @@ module Navfund
       fname
     end
     
-    # List supported funds
-    def funds
-      Funds
-    end
-    
-    # List supported funds by name
-    def fund_names
-      self.funds.map{ |x| x[:name] }
-    end
-    
-    # Check if the fund name is supported
-    def valid_fund?(fund)
-      self.fund_names.include?(fund)
-    end
   end
 end

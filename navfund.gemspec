@@ -11,8 +11,8 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Navfund is a ruby gem that fetches the values of the current NAVPU/NAVPS of several Banks/Providers of UITFs/Mutual Funds}
   gem.homepage      = "https://github.com/marvs/navfund"
   
-  gem.add_runtime_dependency "nokogiri"
-  gem.add_development_dependency "rake"
+  gem.add_runtime_dependency "nokogiri", ">= 1.4.0"
+  gem.add_development_dependency "rake", ">= 0.8.7"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
