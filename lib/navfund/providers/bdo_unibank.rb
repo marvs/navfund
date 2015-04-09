@@ -29,7 +29,7 @@ module Navfund
     end
     
     # Fetch the current value
-    def value(fund)
+    def value(fund, fund_type=nil)
       uitf_com_ph_parser(fund)
     end
     
