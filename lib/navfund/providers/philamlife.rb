@@ -35,6 +35,7 @@ module Navfund
       ]
       
     def initialize
+      @funds = Funds
       @url = MAIN_URL
       @vul_document = open(VUL_URL).read
       @wrapped_vul_document = Nokogiri::HTML(@vul_document)

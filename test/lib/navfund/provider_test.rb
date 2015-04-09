@@ -15,7 +15,7 @@ describe Navfund do
         @sunlife.value(fund[:name], fund[:type]).wont_be_nil
       end
       @metrobank.funds.each do |fund|
-        @metrobank.value(fund[:name], fund[:type]).wont_be_nil
+        @metrobank.value(fund[:name]).wont_be_nil
       end
     end
   end

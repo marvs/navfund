@@ -10,7 +10,7 @@ module Navfund
     end
     
     def self.strip_value(val)
-      val.strip.gsub('PHP', '').gsub('USD', '').strip
+      val.strip.gsub('PHP', '').gsub('USD', '').gsub(',', '').strip
     end
     
     # List supported funds by name
