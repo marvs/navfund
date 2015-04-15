@@ -20,7 +20,8 @@ require "navfund/providers/sunlife"
 require "navfund/providers/philamlife"
 require "navfund/providers/bdo_unibank"
 require "navfund/providers/bpi"
+require "navfund/providers/philippine_national_bank"
 
 module Navfund
-  Providers = [Metrobank, Sunlife, Philamlife, BDO, BPI]
+  Providers = [Metrobank, Sunlife, Philamlife, BDO, BPI, PNB]
 end
