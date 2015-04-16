@@ -5,17 +5,17 @@ module Navfund
     # List of funds
     MAIN_URL = "http://www.uitf.com.ph/daily_navpu.php?bank_id=1"
     Funds = [
-      {:name => "Money Market Fund", :currency => "PHP", :code => "money_market"}, 
-      {:name => "Max-3 Bond Fund", :currency => "PHP", :code => "max3_bond"},
-      {:name => "Wealth Builder Fund", :currency => "PHP", :code => "wealth_builder"},
-      {:name => "Max-5 Bond Fund", :currency => "PHP", :code => "max5_bond"},
-      {:name => "Balanced Fund", :currency => "PHP", :code => "balanced"},
-      {:name => "Equity Fund", :currency => "PHP", :code => "equity"},
-      {:name => "High Dividend Yield Fund", :currency => "PHP", :code => "high_dividend_yield"},
-      {:name => "PSEi Tracker Fund", :currency => "PHP", :code => "psei_tracker"},
-      {:name => "$ Money Market Fund", :currency => "USD", :code => "dollar_money_market"},
-      {:name => "$ Max-3 Bond Fund", :currency => "USD", :code => "dollar_max3_bond"},
-      {:name => "$ Max-5 Bond Fund", :currency => "USD", :code => "dollar_max5_bond"}
+      {:name => "Money Market Fund", :currency => "PHP", :ticker => "MBSTART:PM"}, 
+      {:name => "Max-3 Bond Fund", :currency => "PHP", :ticker => "MBELITE:PM"},
+      {:name => "Wealth Builder Fund", :currency => "PHP", :ticker => "MBIPLUS:PM"},
+      {:name => "Max-5 Bond Fund", :currency => "PHP", :ticker => "MBPKEAR:PM"},
+      {:name => "Balanced Fund", :currency => "PHP", :ticker => "MBCAPGR:PM"},
+      {:name => "Equity Fund", :currency => "PHP", :ticker => "MBEQITY:PM"},
+      {:name => "High Dividend Yield Fund", :currency => "PHP", :ticker => ""},
+      {:name => "PSEi Tracker Fund", :currency => "PHP", :ticker => ""},
+      {:name => "$ Money Market Fund", :currency => "USD", :ticker => "MBDMMKF:PM"},
+      {:name => "$ Max-3 Bond Fund", :currency => "USD", :ticker => "MBPHLIQ:PM"},
+      {:name => "$ Max-5 Bond Fund", :currency => "USD", :ticker => "MBPHLBD:PM"}
       ]
     
     def initialize
