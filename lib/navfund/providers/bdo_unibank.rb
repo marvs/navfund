@@ -33,5 +33,9 @@ module Navfund
       uitf_com_ph_parser(fund)
     end
     
+    def value_at
+      uitf_com_ph_date_parser
+    end
+    
   end
 end

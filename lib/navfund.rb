@@ -1,5 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
+require 'openssl'
+require 'date'
 
 # Add current directory to load paths
 main_dir = File.dirname(__FILE__)

@@ -4,8 +4,12 @@ module Navfund
   class Provider
     attr_reader :funds
     
-    def scrape
-      @document = open(@url).read
+    def scrape(opts={})
+      if opts[:check_ssl] == false
+        @document = open(@url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read
+      else
+        @document = open(@url).read
+      end
       @wrapped_document = Nokogiri::HTML(@document)
     end
     
@@ -23,7 +27,13 @@ module Navfund
       fund_names.include?(fund)
     end
     
+    # Returns the fund value
     def value
+      nil
+    end
+    
+    # Returns the date of the fund values
+    def value_at
       nil
     end
     
@@ -47,6 +57,12 @@ module Navfund
         raise InvalidFund
       end
       val
+    end
+    
+    def uitf_com_ph_date_parser
+      dtext = @wrapped_document.search("h5").first.text
+      dstr = dtext.split("as of").last.strip
+      Date.parse(dstr)
     end
     
   end

@@ -68,5 +68,12 @@ module Navfund
       val
     end
     
+    def value_at
+      dcontainer = @wrapped_document.search("div.newsHeadlineTitle[align='left']").first
+      dtext = dcontainer.text
+      dstr = dtext.split("As of").last.strip
+      Date.strptime(dstr, "%m/%d/%Y")
+    end
+    
   end
 end

@@ -1,10 +1,9 @@
 # Philam Life
-# old main - http://www.philamlife.com/en/individuals/resources-and-guides/fund-prices/philam-life-variable-funds/philam_life_variable_funds.html
 
 module Navfund
   class Philamlife < Provider
     MAIN_URL = "https://portal.philamlife.com/NAVPU/philamlife"
-    VUL_URL = "http://www.philamlife.com/en/individuals/resources-and-guides/fund-prices/pelac-variable-funds/pelac_variable_funds.html"
+    VUL_URL = "http://www.philamlife.com/en/individuals/resources-and-guides/fund-prices/pelac-naupns/pelac_variable_funds_new.html"
     Funds = [
       {:name => "PAMI PHILAM BOND FUND", :currency => "PHP", :type => "main", :ticker => "PHILABF:PM"}, 
       {:name => "PAMI PHILAM FUND", :currency => "PHP", :type => "main", :ticker => "PHILAMF:PM"},
@@ -37,9 +36,9 @@ module Navfund
     def initialize
       @funds = Funds
       @url = MAIN_URL
-      @vul_document = open(VUL_URL).read
+      @vul_document = open(VUL_URL, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read
       @wrapped_vul_document = Nokogiri::HTML(@vul_document)
-      self.scrape
+      self.scrape(:check_ssl => false)
     end 
     
     # Fetch the current value
@@ -59,19 +58,17 @@ module Navfund
         else
           fval = fname.parent.next_element rescue nil
         end
-        #fname = find_fund_node(source_document, fund)
-        #if fname
-        #  fval = fname.next_element.next_element rescue nil
-        #elsif @wrapped_vul_document && fund_type != :vul
-        #  # Search VUL page (if its not done before)
-        #  fname = find_fund_node(@wrapped_vul_document, fund)
-        #  fval = fname.next_element.next_element rescue nil
-        #end
         val = Provider.strip_value(fval.text) if fval
       else
         raise InvalidFund
       end
       val
+    end
+    
+    def value_at
+      dcontainer = @wrapped_document.search('div#detailcol3').first
+      dtext = dcontainer.text.strip
+      Date.strptime(dtext, "%m/%d/%Y")
     end
     
     def find_fund_node(doc, fund)
