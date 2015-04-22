@@ -13,8 +13,8 @@ module Navfund
       {:name => "UCPB US$ Money Market Fund", :currency => "USD", :ticker => "UCPBDMM:PM"}
       ]
     
-    def initialize
-      @url = MAIN_URL
+    def initialize(main_url=nil)
+      @url = main_url ||= MAIN_URL
       @funds = Funds
       scrape
     end

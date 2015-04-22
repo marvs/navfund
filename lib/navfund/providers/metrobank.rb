@@ -18,8 +18,8 @@ module Navfund
       {:name => "$ Max-5 Bond Fund", :currency => "USD", :ticker => "MBPHLBD:PM"}
       ]
     
-    def initialize
-      @url = MAIN_URL
+    def initialize(main_url=nil)
+      @url = main_url ||= MAIN_URL
       @funds = Funds
       scrape
     end

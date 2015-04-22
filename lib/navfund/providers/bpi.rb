@@ -33,8 +33,8 @@ module Navfund
       {:name => "Odyssey Asia Pacific High Dividend Equity Fund", :currency => "USD", :ticker => "INGAPHD:PM"}
       ]
     
-    def initialize
-      @url = MAIN_URL
+    def initialize(main_url=nil)
+      @url = main_url ||= MAIN_URL
       @funds = Funds
       scrape
     end

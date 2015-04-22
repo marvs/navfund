@@ -13,8 +13,8 @@ module Navfund
       {:name => "Dollar Abundance Fund", :currency => "USD", :ticker => "SNLPRDA:PM"}
       ]
    
-    def initialize
-      @funds = Funds
+    def initialize(main_url=nil)
+      @url = main_url ||= MAIN_URL
       @url = MAIN_URL
       self.scrape
     end 

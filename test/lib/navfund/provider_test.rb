@@ -1,21 +1,23 @@
 require File.expand_path('../../../test_helper.rb', __FILE__)
 
 describe Navfund do
-  before do
-    @sunlife = Navfund::Sunlife.new
-    @metrobank = Navfund::Metrobank.new
-  end  
-  describe "when a provider is given" do
-    it "should get the provider object" do
-      @sunlife.wont_be_nil
-      @metrobank.wont_be_nil
+  Navfund::Providers.each do |provider_klass|
+    before do
+      google_cache_url = "http://webcache.googleusercontent.com/search?q=cache:"
+      test_url = "#{google_cache_url}#{provider_klass::MAIN_URL}"
+      @provider = provider_klass.new(test_url)
     end
-    it "should get the current value back in the response" do
-      @sunlife.funds.each do |fund|
-        @sunlife.value(fund[:name], fund[:type]).wont_be_nil
+    describe "for the #{provider_klass.to_s} provider" do
+      it "should get the #{provider_klass.to_s} object" do
+        @provider.wont_be_nil
       end
-      @metrobank.funds.each do |fund|
-        @metrobank.value(fund[:name]).wont_be_nil
+      it "should get the current values of #{provider_klass.to_s}" do
+        @provider.funds.each do |fund|
+          @provider.value(fund[:name]).wont_be_empty
+        end
+      end
+      it "should get the value date of #{provider_klass.to_s}" do
+        assert @provider.value_at.is_a?(Date)
       end
     end
   end

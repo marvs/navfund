@@ -22,8 +22,8 @@ module Navfund
       {:name => "MEDIUM TERM DOLLAR BOND FUND", :currency => "USD", :ticker => "EPCIBUS:PM"}
       ]
     
-    def initialize
-      @url = MAIN_URL
+    def initialize(main_url=nil)
+      @url = main_url ||= MAIN_URL
       @funds = Funds
       scrape
     end
