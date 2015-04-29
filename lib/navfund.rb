@@ -17,17 +17,19 @@ require "navfund/exceptions"
 require "navfund/provider"
 
 # Providers
-require "navfund/providers/metrobank"
-require "navfund/providers/sunlife"
-require "navfund/providers/philamlife"
+require "navfund/providers/ab_capital"
+require "navfund/providers/asia_united_bank"
 require "navfund/providers/bdo_unibank"
 require "navfund/providers/bpi"
+require "navfund/providers/metrobank"
+require "navfund/providers/philamlife"
 require "navfund/providers/philippine_national_bank"
 require "navfund/providers/security_bank"
-require "navfund/providers/union_bank"
+require "navfund/providers/sunlife"
 require "navfund/providers/ucpb"
-require "navfund/providers/ab_capital"
+require "navfund/providers/union_bank"
+
 
 module Navfund
-  Providers = [Metrobank, Sunlife, Philamlife, BDO, BPI, PNB, SecurityBank, UnionBank, UCPB, ABCapital]
+  Providers = [ABCapital, AsiaUnitedBank, BDO, BPI, Metrobank, Philamlife, PNB, SecurityBank, Sunlife, UCPB, UnionBank]
 end
