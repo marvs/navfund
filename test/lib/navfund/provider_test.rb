@@ -1,7 +1,9 @@
 require File.expand_path('../../../test_helper.rb', __FILE__)
 
 describe Navfund do
-  Navfund::Providers.each do |provider_klass|
+  #@providers = Navfund::Providers
+  @providers = [Navfund::Metrobank, Navfund::Sunlife, Navfund::Philamlife]
+  @providers.each do |provider_klass|
     before do
       google_cache_url = "http://webcache.googleusercontent.com/search?q=cache:"
       test_url = "#{google_cache_url}#{provider_klass::MAIN_URL}"
