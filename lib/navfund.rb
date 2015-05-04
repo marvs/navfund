@@ -23,6 +23,7 @@ require "navfund/providers/atram"
 require "navfund/providers/bank_of_commerce"
 require "navfund/providers/bdo_unibank"
 require "navfund/providers/bpi"
+require "navfund/providers/china_bank_savings"
 require "navfund/providers/metrobank"
 require "navfund/providers/philamlife"
 require "navfund/providers/philippine_national_bank"
@@ -33,5 +34,5 @@ require "navfund/providers/union_bank"
 
 
 module Navfund
-  Providers = [ABCapital, AsiaUnitedBank, ATRAM, BankOfCommerce, BDO, BPI, Metrobank, Philamlife, PNB, SecurityBank, Sunlife, UCPB, UnionBank]
+  Providers = [ABCapital, AsiaUnitedBank, ATRAM, BankOfCommerce, BDO, BPI, ChinaBankSavings, Metrobank, Philamlife, PNB, SecurityBank, Sunlife, UCPB, UnionBank]
 end
