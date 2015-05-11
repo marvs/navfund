@@ -28,6 +28,7 @@ require "navfund/providers/china_banking_corporation"
 require "navfund/providers/ctbc_bank"
 require "navfund/providers/development_bank_philippines"
 require "navfund/providers/eastwest_bank"
+require "navfund/providers/land_bank"
 require "navfund/providers/metrobank"
 require "navfund/providers/philamlife"
 require "navfund/providers/philippine_national_bank"
@@ -38,5 +39,5 @@ require "navfund/providers/union_bank"
 
 
 module Navfund
-  Providers = [ABCapital, AsiaUnitedBank, ATRAM, BankOfCommerce, BDO, BPI, ChinaBankSavings, ChinaBank, CTBCBank, DevelopmentBankPh, EastWestBank, Metrobank, Philamlife, PNB, SecurityBank, Sunlife, UCPB, UnionBank]
+  Providers = [ABCapital, AsiaUnitedBank, ATRAM, BankOfCommerce, BDO, BPI, ChinaBankSavings, ChinaBank, CTBCBank, DevelopmentBankPh, EastWestBank, LandBank, Metrobank, Philamlife, PNB, SecurityBank, Sunlife, UCPB, UnionBank]
 end
