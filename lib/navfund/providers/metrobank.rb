@@ -5,17 +5,17 @@ module Navfund
     # List of funds
     MAIN_URL = "http://www.uitf.com.ph/daily_navpu.php?bank_id=1"
     Funds = [
-      {:name => "Money Market Fund", :currency => "PHP", :ticker => "MBSTART:PM"}, 
-      {:name => "Max-3 Bond Fund", :currency => "PHP", :ticker => "MBELITE:PM"},
-      {:name => "Wealth Builder Fund", :currency => "PHP", :ticker => "MBIPLUS:PM"},
-      {:name => "Max-5 Bond Fund", :currency => "PHP", :ticker => "MBPKEAR:PM"},
-      {:name => "Balanced Fund", :currency => "PHP", :ticker => "MBCAPGR:PM"},
-      {:name => "Equity Fund", :currency => "PHP", :ticker => "MBEQITY:PM"},
-      {:name => "High Dividend Yield Fund", :currency => "PHP", :ticker => ""},
-      {:name => "PSEi Tracker Fund", :currency => "PHP", :ticker => ""},
-      {:name => "$ Money Market Fund", :currency => "USD", :ticker => "MBDMMKF:PM"},
-      {:name => "$ Max-3 Bond Fund", :currency => "USD", :ticker => "MBPHLIQ:PM"},
-      {:name => "$ Max-5 Bond Fund", :currency => "USD", :ticker => "MBPHLBD:PM"}
+      {:name => "Metro Money Market Fund", :currency => "PHP", :ticker => "MBSTART:PM"}, 
+      {:name => "Metro Max-3 Bond Fund", :currency => "PHP", :ticker => "MBELITE:PM"},
+      {:name => "Metro Wealth Builder Fund", :currency => "PHP", :ticker => "MBIPLUS:PM"},
+      {:name => "Metro Max-5 Bond Fund", :currency => "PHP", :ticker => "MBPKEAR:PM"},
+      {:name => "Metro Balanced Fund", :currency => "PHP", :ticker => "MBCAPGR:PM"},
+      {:name => "Metro Equity Fund", :currency => "PHP", :ticker => "MBEQITY:PM"},
+      {:name => "Metro High Dividend Yield Fund", :currency => "PHP", :ticker => ""},
+      {:name => "Metro PSEi Tracker Fund", :currency => "PHP", :ticker => ""},
+      {:name => "Metro$ Money Market Fund", :currency => "USD", :ticker => "MBDMMKF:PM"},
+      {:name => "Metro$ Max-3 Bond Fund", :currency => "USD", :ticker => "MBPHLIQ:PM"},
+      {:name => "Metro$ Max-5 Bond Fund", :currency => "USD", :ticker => "MBPHLBD:PM"}
       ]
     
     def initialize(main_url=nil)

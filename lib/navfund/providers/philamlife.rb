@@ -23,7 +23,7 @@ module Navfund
       {:name => "GROWTH INVEST FUND 3", :currency => "PHP", :ticker => ""}
       ]
       
-   def initialize(main_url=nil)
+    def initialize(main_url=nil)
       @url = main_url ||= MAIN_URL
       @funds = Funds
       self.scrape(:check_ssl => false)
