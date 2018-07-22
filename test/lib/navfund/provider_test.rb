@@ -2,11 +2,12 @@ require File.expand_path('../../../test_helper.rb', __FILE__)
 
 describe Navfund do
   #@providers = Navfund::Providers
-  @providers = [Navfund::Metrobank, Navfund::Sunlife, Navfund::Philamlife]
+  @providers = [Navfund::Metrobank, Navfund::Sunlife]
   @providers.each do |provider_klass|
     before do
-      google_cache_url = "http://webcache.googleusercontent.com/search?q=cache:"
+      google_cache_url = "https://webcache.googleusercontent.com/search?q=cache:"
       test_url = "#{google_cache_url}#{provider_klass::MAIN_URL}"
+      puts test_url
       @provider = provider_klass.new(test_url)
     end
     describe "for the #{provider_klass.to_s} provider" do
@@ -15,7 +16,7 @@ describe Navfund do
       end
       it "should get the current values of #{provider_klass.to_s}" do
         @provider.funds.each do |fund|
-          @provider.value(fund[:name]).wont_be_empty
+          @provider.value(fund[:name]).to_s.wont_be_empty
         end
       end
       it "should get the value date of #{provider_klass.to_s}" do

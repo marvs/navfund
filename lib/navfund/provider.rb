@@ -52,7 +52,7 @@ module Navfund
         if fname
           fval = fname.ancestors('tr').first.search("td[data-title='NAVpu'] div").first rescue nil
         end
-        val = Provider.strip_value(fval.text) if fval
+        val = Provider.strip_value(fval.text).to_f if fval
       else
         raise InvalidFund
       end
